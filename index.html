@@ -1,0 +1,180 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div> 
+            <label> Click to deploy contract </label>
+        </div>
+        
+        <div>
+             <button id = "deploybutton"> deploy </button>
+        </div>
+        
+        <div>
+            <label> Customer Address:</label>  <input text="" id = "input_customeraddress">                  
+        </div>
+        
+        <div>
+            <label> Contract Deployed at:</label>  <input text="" id = "input_contractaddress">
+        </div>
+
+            <div>
+            <label> Insurance Company address: </label>  <input text="" id = "input_companyaddress">
+            </div>
+
+            <div>
+            <label> Resolver address: </label>  <input text="" id = "input_resolveraddress">
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+       if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        var CoursetroContract = web3.eth.contract([
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "resolver",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "customer",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "payPremium",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_InsuranceCompany",
+                "type": "address"
+            }
+        ],
+        "name": "setInsuranceCompany",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_resolver",
+                "type": "address"
+            }
+        ],
+        "name": "setResolver",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "approveInsurance",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "insurance_company",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "insuranceAmount",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "claimInsurance",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "eligible_for_insurance",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    }
+]);
+
+
+
+var Coursetro = CoursetroContract.at('0xb9870f859cc5e25430cbcdba0b43ba4ba154a296');
+        console.log(Coursetro);
+
+
+    </script>
+  
+    </body>
+</html>
